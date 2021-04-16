@@ -61,27 +61,89 @@ namespace EjerciciosBasicos
         // - Más de 40 cuotas el interés aplicado al monto es de un 50%.
         public void Ejercicio14()
         {
+            float montoTotal = 0;
+            float valorCuota = 0;
+
             Console.WriteLine("Ingrese el monto del crédito a solicitar:");
             float monto = float.Parse(Console.ReadLine());
             Console.WriteLine("Ingrese las cuotas en las que quiere pagar el crédito:");
             int cuotas = int.Parse(Console.ReadLine());
 
+            Console.WriteLine("====================");
+
             if (cuotas >= 1 && cuotas <= 12)
             {
-
+                montoTotal = monto + (monto * float.Parse("0,1"));
+                valorCuota = montoTotal / cuotas;
+            } else if (cuotas >= 13 && cuotas <= 30)
+            {
+                montoTotal = monto + (monto * float.Parse("0,25"));
+                valorCuota = montoTotal / cuotas;
+            } else if (cuotas >= 31 && cuotas <= 40)
+            {
+                montoTotal = monto + (monto * float.Parse("0,35"));
+                valorCuota = montoTotal / cuotas;
+            } else if (cuotas > 40)
+            {
+                montoTotal = monto + (monto * float.Parse("0,50"));
+                valorCuota = montoTotal / cuotas;
+            } else
+            {
+                Console.WriteLine("Debe ingresar una cuota válida.");
+                return;
             }
+
+            Console.WriteLine("El monto total a cancelar es de {0} y las cuotas tendrán un valor de {1}.", montoTotal, valorCuota);
         }
 
         // Cree un programa de consola que solicite al cliente su nombre y edad además del nombre y la edad de otra persona, el programa debe mostrar por pantalla el nombre de la persona menor y mayor, además de la diferencia de edad entre ambos.
         public void Ejercicio15()
         {
+            Console.WriteLine("Ingrese el nombre y la edad de dos personas, determinaremos cual es menor y mayor, y la diferencia de edad entre ambas personas.");
+            Console.WriteLine("====================");
+            Console.WriteLine("Ingrese el nombre de la primera persona.");
+            string nombre1 = Console.ReadLine();
+            Console.WriteLine("====================");
+            Console.WriteLine("Ingrese la edad de la primera persona.");
+            int edad1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("====================");
+            Console.WriteLine("Ingrese el nombre de la segunda persona.");
+            string nombre2 = Console.ReadLine();
+            Console.WriteLine("====================");
+            Console.WriteLine("Ingrese la edad de la segunda persona.");
+            int edad2 = int.Parse(Console.ReadLine());
 
+            Console.WriteLine("====================");
+
+            if (edad1 > edad2)
+            {
+                int diff = edad1 - edad2;
+                Console.WriteLine("La persona menor es {0} y la mayor es {1}.", nombre2, nombre1);
+                Console.WriteLine("La diferencia de edad es {0} años.", diff);
+            } else
+            {
+                int diff = edad2 - edad1;
+                Console.WriteLine("La persona menor es {0} y la mayor es {1}.", nombre1, nombre2);
+                Console.WriteLine("La diferencia de edad es {0} años.", diff);
+            }
         }
 
         // Cree un programa de consola que solicite al cliente un número de minutos el programa debe mostrar por pantalla a cuantas horas y minutos corresponden al número ingresado.
         public void Ejercicio16()
         {
+            Console.WriteLine("Ingrese los minutos para determinar a cuantas horas y minutos corresponden:");
+            int min = int.Parse(Console.ReadLine());
+            int hr = 0;
 
+            Console.WriteLine("====================");
+
+            while (min > 59)
+            {
+                hr++;
+                min -= 60;
+            }
+
+            Console.WriteLine("Corresponden a {0} horas y {1} minutos.", hr, min);
         }
     }
 }
